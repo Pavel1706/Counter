@@ -1,0 +1,44 @@
+.tablo {
+  text-align: center;
+    border: black;
+}
+
+.face{
+    border-color: black;
+}
+
+.error{
+    color: red;
+}
+.red{
+ color: red;
+}
+.disabled {
+  opacity: 0.5
+}
+
+.button {
+    display: inline-block;
+    /*display: block;*/
+    margin: 5px;
+    padding: 15px 25px;
+    /*padding: 5px;*/
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: deepskyblue;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+}
+
+.button:hover {background-color: cornflowerblue}
+
+.button:active {
+    background-color: dodgerblue;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
