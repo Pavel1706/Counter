@@ -43,8 +43,8 @@ export function Button(props: buttonResType) {
 
         <Grid item >
             <Paper style = {{padding:"20px"} }>
-            <h1 className={props.counter===props.maxCounter ? 'red' : ''} >{props.counter}</h1>
-            <button className='button' disabled={props.counter === 0 || props.counter===props.maxCounter}
+            <h1 className={props.counter===props.maxCounter ? 'red' : ''} >{props.counter }</h1>
+            <button className='button' disabled={props.maxCounter === 0 || props.counter===props.maxCounter}
                     onClick={add}>push me
             </button>
             <button className='button' disabled={props.counter === 0}

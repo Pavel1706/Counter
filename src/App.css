@@ -8,6 +8,7 @@
 }
 
 .error{
+    border-color: crimson;
     color: red;
 }
 .red{

@@ -20,8 +20,7 @@ function App() {
         }
     }
     function resetInp() {
-
-        setCounter(0)
+        setCounter(minCounter)
     }
 
     useEffect(()=> {
@@ -34,8 +33,12 @@ function App() {
     },[])
 
     useEffect(()=>{
-        localStorage.setItem('counterValue', JSON.stringify(counter))
-    }, [counter])
+        localStorage.setItem('counterValue', JSON.stringify(minCounter))
+    }, [minCounter])
+
+    useEffect(()=>{
+        localStorage.setItem('counterValueMax', JSON.stringify(maxCounter))
+    }, [maxCounter])
 
 
 
