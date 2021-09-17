@@ -8,73 +8,63 @@ type InputType = {
     counter: number
     minCounter: number
     maxCounter: number
-
+    SetError: (text:string)=> void
+    error:string
+    setCondition: (value:boolean)=> void
+    condition: boolean
 }
 
 export function Input(props: InputType) {
 
-    const [error, SetError] = useState<string>('')
-
-
 
     function onChangeInputMax(e: ChangeEvent<HTMLInputElement>) {
+        props.SetError('Push button Set')
+        props.setCondition(false)
         props.SetMaxCounter(+e.currentTarget.value)
         // Comprasion()
         console.log(+e.currentTarget.value)
     }
 
     function onChangeInputMin(e: ChangeEvent<HTMLInputElement>) {
-
+        props.SetError('Push button Set')
+        props.setCondition(false)
         props.SetMinCounter(+e.currentTarget.value)
-        // Comprasion()
+
         console.log(+e.currentTarget.value)
     }
 
-    function Comprasion(){
-        if(props.minCounter === props.maxCounter){
-            console.log(props.minCounter)
-            console.log(props.maxCounter)
-            SetError('it isn`t correct')
-        }
-        if(props.minCounter!==props.maxCounter){
-            SetError('')
-        }
-    }
 
-    function setLocal() {
-        props.setCounter(props.minCounter)
-        SetError('')
-    }
-
-
-    useEffect(()=> {
+    useEffect(() => {
         console.log('hey')
         let valueAsString = localStorage.getItem('counterValue')
         if (valueAsString) {
             let newValue = JSON.parse(valueAsString)
             props.SetMinCounter(newValue)
         }
-    },[])
-    useEffect(()=> {
+    }, [])
+    useEffect(() => {
         console.log('hey')
         let valueAsString = localStorage.getItem('counterValueMax')
         if (valueAsString) {
             let newValue = JSON.parse(valueAsString)
             props.SetMaxCounter(newValue)
         }
-    },[])
+    }, [])
 
     return (<div>
 
         <Grid item>
             <Paper style={{padding: "20px"}}>
-                <div className='text'>max value:<input value={props.maxCounter} type='number' onChange={onChangeInputMax} /></div>
-                <div className='text'>start value:<input value={props.minCounter}type='number' className={error? 'error': ''}
+
+                <div className='text'>max value:<input value={props.maxCounter} type='number'
+                                                       onChange={onChangeInputMax}/></div>
+                <div className='text'>start value:<input value={props.minCounter} type='number'
+                                                         className={props.error ? 'error' : ''}
                                                          onChange={onChangeInputMin}/></div>
-                <button className='button' onClick={setLocal}
-                        disabled={props.minCounter < 0} >SET</button>
+
+                <h1 className={props.counter === props.maxCounter ? 'red' : ''}>{props.error ? props.error : props.counter}</h1>
             </Paper>
         </Grid>
-        <div className='error'>{error}</div>
+
     </div>)
 }
